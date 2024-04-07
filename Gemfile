@@ -17,6 +17,12 @@ gem "puma", ">= 5.0"
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 
+# AASM State machine
+gem 'aasm', '~> 4.11'
+
+# JSON Serializer
+gem 'blueprinter', '~> 0.25.3'
+
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 
