@@ -1,17 +1,21 @@
+# frozen_string_literal: true
+
 class PickupsController < ApplicationController
-    before_action :find_one, only: :pickup
+  before_action :find_one, only: :pickup
 
-    def pickup
-        Pickups::Pickup.new(@pickup).process
+  # Performs a pickup
+  def pickup
+    Pickups::Pickup.new(@pickup).process
 
-        render json: PickupSerializer.serialize!(@pickup.reload, :extended), status: 200
-    end
+    render json: PickupSerializer.serialize!(@pickup.reload, :extended), status: :ok
+  end
 
-    private
+  private
 
-    def find_one
-        @pickup = Pickup.find(params[:id])
-    rescue ActiveRecord::RecordNotFound
-        render json: {error: { message: "Pickup with ID #{params[:id]} not found" }}, status: 404
-    end
+  # Search a single pickup by id
+  def find_one
+    @pickup = Pickup.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    render json: { error: { message: "Pickup with ID #{params[:id]} not found" } }, status: :not_found
+  end
 end

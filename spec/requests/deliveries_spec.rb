@@ -1,21 +1,23 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe "Deliveries", type: :request do
+RSpec.describe 'Deliveries', type: :request do
   let!(:delivery) { create(:delivery) }
 
-  describe "PUT /deliveries/:id/deliver" do
+  describe 'PUT /deliveries/:id/deliver' do
     context 'with a valid id' do
       context 'with a pending delivery' do
         before do
           params = {
             "delivery": {
-              "receiver_name": "Juan Pino",
-              "receiver_phone": "55566665",
-              "receiver_legal_id": "11.111.111-1",
-              "proof_of_delivery": "This should be something better"
+              "receiver_name": 'Juan Pino',
+              "receiver_phone": '55566665',
+              "receiver_legal_id": '11.111.111-1',
+              "proof_of_delivery": 'This should be something better'
             }
           }
-          put("/deliveries/#{delivery.id}/deliver", params: params)
+          put("/deliveries/#{delivery.id}/deliver", params:)
         end
         it 'delivers delivery' do
           expect(delivery.reload.state).to eq('delivered')
@@ -50,13 +52,13 @@ RSpec.describe "Deliveries", type: :request do
           delivery.deliver!
           params = {
             "delivery": {
-              "receiver_name": "Juan Pino",
-              "receiver_phone": "55566665",
-              "receiver_legal_id": "11.111.111-1",
-              "proof_of_delivery": "This should be something better"
+              "receiver_name": 'Juan Pino',
+              "receiver_phone": '55566665',
+              "receiver_legal_id": '11.111.111-1',
+              "proof_of_delivery": 'This should be something better'
             }
           }
-          put("/deliveries/#{delivery.id}/deliver", params: params)
+          put("/deliveries/#{delivery.id}/deliver", params:)
         end
         it 'returns status code 400' do
           expect(response.status).to be 400

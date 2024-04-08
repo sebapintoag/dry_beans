@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PickupSerializer < Blueprinter::Base
   include Serializable
 
@@ -7,7 +9,7 @@ class PickupSerializer < Blueprinter::Base
   view :short do
     fields :picked_up_at
   end
-  
+
   view :extended do
     include_view :short
 

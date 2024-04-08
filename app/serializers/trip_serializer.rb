@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TripSerializer < Blueprinter::Base
   include Serializable
 
@@ -14,7 +16,7 @@ class TripSerializer < Blueprinter::Base
   view :extended do
     include_view :short
     fields :destination_person_name, :destination_person_phone, :started_at, :finished_at,
-            :cancelled_at, :estimated_arrival_at, :created_at, :updated_at
+           :cancelled_at, :estimated_arrival_at, :created_at, :updated_at
 
     association :deliveries, blueprint: DeliverySerializer, view: :extended
     association :pickups, blueprint: PickupSerializer, view: :extended

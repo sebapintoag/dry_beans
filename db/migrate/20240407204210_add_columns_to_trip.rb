@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddColumnsToTrip < ActiveRecord::Migration[7.1]
   def change
     add_column :trips, :code, :string, null: false

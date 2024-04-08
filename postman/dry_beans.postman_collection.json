@@ -1,0 +1,153 @@
+{
+	"info": {
+		"_postman_id": "ed60a600-2b33-4d78-bf9d-71a544f4beec",
+		"name": "Driv.in/dry_beans",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7558347"
+	},
+	"item": [
+		{
+			"name": "All routes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{LOCAL}}/routes",
+					"host": [
+						"{{LOCAL}}"
+					],
+					"path": [
+						"routes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "All routes (pages)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{LOCAL}}/routes?page=2",
+					"host": [
+						"{{LOCAL}}"
+					],
+					"path": [
+						"routes"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "One route",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{LOCAL}}/routes/1",
+					"host": [
+						"{{LOCAL}}"
+					],
+					"path": [
+						"routes",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Deliver",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"delivery\": {\n        \"receiver_name\": \"Juan Pino\",\n        \"receiver_phone\": \"55566665\",\n        \"receiver_legal_id\": \"11.111.111-1\",\n        \"proof_of_delivery\": \"This should be something better\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{LOCAL}}/deliveries/1/deliver",
+					"host": [
+						"{{LOCAL}}"
+					],
+					"path": [
+						"deliveries",
+						"1",
+						"deliver"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Pickup",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"delivery\": {\n        \"receiver_name\": \"Juan Pino\",\n        \"receiver_phone\": \"55566665\",\n        \"receiver_legal_id\": \"11.111.111-1\",\n        \"proof_of_delivery\": \"This should be something better\"\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{LOCAL}}/pickups/1/pickup",
+					"host": [
+						"{{LOCAL}}"
+					],
+					"path": [
+						"pickups",
+						"1",
+						"pickup"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "LOCAL",
+			"value": "http://localhost:3000",
+			"type": "string"
+		}
+	]
+}

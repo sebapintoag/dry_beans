@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddColumnsToPickup < ActiveRecord::Migration[7.1]
   def change
     add_column :pickups, :token, :string, null: false
