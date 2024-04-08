@@ -1,4 +1,6 @@
 # DRY_BEANS Project
+- Ruby version: 3.2.2
+- Ruby on Rails version: 7.1.3.2
 
 ## How to run
 ## Option 1: using docker
