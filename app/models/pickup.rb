@@ -1,8 +1,15 @@
 class Pickup < ApplicationRecord
     include AASM
     include AasmEventAt
+    include Tokenable
 
     belongs_to :trip
+
+    validates :token, presence: true
+    validates :state, presence: true
+    validates :trip, presence: true
+
+    before_validation :generate_token
 
     aasm column: :state do
         state :pending, initial: true

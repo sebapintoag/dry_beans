@@ -1,11 +1,19 @@
 class Trip < ApplicationRecord
     include AASM
     include AasmEventAt
+    include Tokenable
 
     belongs_to :route
 
     has_many :deliveries, dependent: :destroy
     has_many :pickups, dependent: :destroy
+
+    validates :code, presence: true
+    validates :destination_address, presence: true
+    validates :state, presence: true
+    validates :route, presence: true
+
+    before_validation :ensure_code_is_present
 
     aasm column: :state do
         state :pending, initial: true
@@ -26,5 +34,11 @@ class Trip < ApplicationRecord
         event :cancel do
             transitions from: [:pending, :started], to: :cancelled
         end
+    end
+
+    private
+
+    def ensure_code_is_present
+        generate_token('code', "#{route.code}_")
     end
 end

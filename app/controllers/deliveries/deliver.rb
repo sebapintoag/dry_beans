@@ -1,9 +1,11 @@
 class Deliveries::Deliver
-    def initialize(id_delivery)
-        #@delivery = Delivery.find(id_delivery)
+    def initialize(delivery, deliver_params)
+        @delivery = delivery
+        @deliver_params = deliver_params
     end
 
     def process
-        puts 'delivered!!!!!!!'
+        @delivery.deliver!
+        @delivery.update(@deliver_params)
     end
 end

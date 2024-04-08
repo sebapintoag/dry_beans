@@ -18,8 +18,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_07_211959) do
     t.bigint "trip_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "token"
-    t.string "state"
+    t.string "token", null: false
+    t.string "state", null: false
     t.datetime "delivered_at"
     t.datetime "postponed_at"
     t.datetime "rejected_at"
@@ -34,8 +34,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_07_211959) do
     t.bigint "trip_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "token"
-    t.string "state"
+    t.string "token", null: false
+    t.string "state", null: false
     t.datetime "picked_up_at"
     t.datetime "postponed_at"
     t.datetime "cancelled_at"
@@ -45,11 +45,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_07_211959) do
   create_table "routes", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "code"
-    t.string "starting_point"
+    t.string "code", null: false
+    t.string "starting_point", null: false
     t.string "destination_point"
     t.string "vehicle_plate"
-    t.string "state"
+    t.string "state", null: false
     t.datetime "approved_at"
     t.datetime "started_at"
     t.datetime "finished_at"
@@ -60,13 +60,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_07_211959) do
     t.bigint "route_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "code"
-    t.string "destination_person_name"
+    t.string "code", null: false
+    t.string "destination_person_name", null: false
     t.string "destination_person_phone"
-    t.string "destination_address"
+    t.string "destination_address", null: false
     t.decimal "destination_lat"
     t.decimal "destination_lng"
-    t.string "state"
+    t.string "state", null: false
     t.datetime "started_at"
     t.datetime "finished_at"
     t.datetime "cancelled_at"

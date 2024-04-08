@@ -1,12 +1,10 @@
-class RouteSerializer < Blueprinter::Base
+class DeliverySerializer < Blueprinter::Base
     identifier :id
   
-    fields :code, :starting_point, :destination_point, :vehicle_plate, :state,
-           :approved_at, :started_at, :finished_at, :cancelled_at,
+    fields :token, :state, :delivered_at, :postponed_at, :rejected_at,
+           :receiver_name, :receiver_phone, :receiver_legal_id, :proof_of_delivery,
            :created_at, :updated_at
     
-    association :trips, blueprint: TripSerializer
-
     def self.serialize!(resource)
       root_name = resource.respond_to?(:size) ? resource.first.class.name.downcase.pluralize : resource.class.name.downcase
       self.render(resource, root: root_name)

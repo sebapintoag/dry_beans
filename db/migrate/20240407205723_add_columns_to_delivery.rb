@@ -1,8 +1,8 @@
 class AddColumnsToDelivery < ActiveRecord::Migration[7.1]
   def change
-    add_column :deliveries, :token, :string
+    add_column :deliveries, :token, :string, null: false
 
-    add_column :deliveries, :state, :string
+    add_column :deliveries, :state, :string, null: false
     add_column :deliveries, :delivered_at, :datetime
     add_column :deliveries, :postponed_at, :datetime
     add_column :deliveries, :rejected_at, :datetime
