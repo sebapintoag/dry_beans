@@ -80,9 +80,18 @@
 <p>The app will be available on <a href="http://localhost:3000">localhost:3000</a></p>
 </li></ol>
 
+<h4 id="label-If+you-27re+running+this+project+for+the+first+time...">If you’re running this project for the first time…</h4>
+<ol><li>
+<p>Run <code>docker-compose run -it web rails db:create</code> to create databases for development and test enviorments.</p>
+</li><li>
+<p>Run <code>docker-compose run -it web rails db:migrate</code> to run migrations and create tables</p>
+</li><li>
+<p>Run <code>docker-compose run -it web rails db:seed</code> to populate the database</p>
+</li></ol>
+
 <h2 id="label-Option+2-3A+running+on+your+machine">Option 2: running on your machine</h2>
 
-<h2 id="label-Requirements">Requirements</h2>
+<h3 id="label-Requirements">Requirements</h3>
 <ul><li>
 <p>Ruby 3.2.2</p>
 </li><li>
@@ -91,20 +100,31 @@
 <p>Postgres installed and running</p>
 </li></ul>
 
-<h2 id="label-Instructions">Instructions</h2>
+<h3 id="label-Instructions">Instructions</h3>
 <ol><li>
 <p>Open a terminal and run <code>bundle install</code> and wait to install all gems</p>
 </li><li>
 <p>Create a copy of the file <code>.env.example</code> in the root folder with the name <code>.env</code> and replace the values of the enviorment variables with your own</p>
 </li><li>
-<p>Then, run <code>rails db:create</code> to create a database for development and test enviorments</p>
-</li><li>
 <p>Finally, run <code>rails s</code> to run the project. The app will be available on <a href="http://localhost:3000">localhost:3000</a></p>
 </li></ol>
+
+<h4 id="label-If+you-27re+running+this+project+for+the+first+time...">If you’re running this project for the first time…</h4>
+<ol><li>
+<p>Run <code>rails db:create</code> to create a database for development and test enviorments</p>
+</li><li>
+<p>Run <code>rails db:migrate</code> to run migrations and create tables</p>
+</li><li>
+<p>Run <code>rails db:seed</code> to populate the database</p>
+</li></ol>
+
+<h3 id="label-Routes">Routes</h3>
+
+<p><strong>Examples of use in Postman collection: <code>postman/dry_beans.postman_collection.json</code></strong> - [GET] <code>/routes</code>: returns all routes with (simplified data) - [GET] <code>/routes/:id</code>: returns a single route by ID (extended data) - [PUT] <code>/deliveries/:id/deliver</code>: completes a delivery. Requires reception data (see Postman collection). - [PUT] <code>/pickups/:id/pickup</code>: completes a pickup.</p>
 </div></div>
 
       <div id="footer">
-  Generated on Mon Apr  8 04:53:51 2024 by
+  Generated on Mon Apr  8 05:45:44 2024 by
   <a href="https://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.36 (ruby-3.2.2).
 </div>
