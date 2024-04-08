@@ -5,6 +5,8 @@ class DeliveriesController < ApplicationController
         Deliveries::Deliver.new(@delivery, deliver_params).process
 
         render json: DeliverySerializer.serialize!(@delivery.reload, :extended), status: 200
+    rescue StandardError => e
+        render json: {error: { message: e.message }}, status: 400
     end
 
     private

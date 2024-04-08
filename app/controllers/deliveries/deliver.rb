@@ -5,6 +5,9 @@ class Deliveries::Deliver
     end
 
     def process
+        raise "Can't deliver. Reception data is not present" unless @deliver_params.present?
+        raise "Can't deliver. Delivery is #{@delivery.state} state." unless @delivery.may_deliver?
+
         @delivery.deliver!
         @delivery.update(@deliver_params)
     end
