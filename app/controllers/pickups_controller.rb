@@ -4,7 +4,7 @@ class PickupsController < ApplicationController
     def pickup
         Pickups::Pickup.new(@pickup).process
 
-        render json: PickupSerializer.serialize!(@pickup.reload), status: 200
+        render json: PickupSerializer.serialize!(@pickup.reload, :extended), status: 200
     end
 
     private

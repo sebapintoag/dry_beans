@@ -37,6 +37,10 @@ class Route < ApplicationRecord
         end
     end
 
+    def trips_sorted
+        trips.in_order
+    end
+
     private
 
     def ensure_code_is_present

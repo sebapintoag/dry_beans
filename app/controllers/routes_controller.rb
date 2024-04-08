@@ -3,11 +3,11 @@ class RoutesController < ApplicationController
     before_action :find_all, only: :index
 
     def index
-        render json: RouteSerializer.serialize!(@routes), status: 200
+        render json: RouteSerializer.serialize!(@routes, :short), status: 200
     end
 
     def show
-        render json: RouteSerializer.serialize!(@route), status: 200
+        render json: RouteSerializer.serialize!(@route, :extended), status: 200
     end
 
     private

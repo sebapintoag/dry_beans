@@ -15,6 +15,8 @@ class Trip < ApplicationRecord
 
     before_validation :ensure_code_is_present
 
+    scope :in_order, -> { order(estimated_arrival_at: :asc) }
+
     aasm column: :state do
         state :pending, initial: true
         state :started

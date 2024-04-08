@@ -4,7 +4,7 @@ class DeliveriesController < ApplicationController
     def deliver
         Deliveries::Deliver.new(@delivery, deliver_params).process
 
-        render json: DeliverySerializer.serialize!(@delivery.reload), status: 200
+        render json: DeliverySerializer.serialize!(@delivery.reload, :extended), status: 200
     end
 
     private
