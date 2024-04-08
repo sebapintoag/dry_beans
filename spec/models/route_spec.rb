@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Route, type: :model do
@@ -11,7 +13,7 @@ RSpec.describe Route, type: :model do
   end
 
   describe 'states' do
-    let(:route) {create(:route)}
+    let(:route) { create(:route) }
 
     context 'when route is created' do
       it 'may transition to approved' do
@@ -76,7 +78,7 @@ RSpec.describe Route, type: :model do
   end
 
   describe 'methods' do
-    let(:route) {build(:route)}
+    let(:route) { build(:route) }
 
     context 'when model is going to be validated' do
       before { route.valid? }

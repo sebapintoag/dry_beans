@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe "Routes", type: :request do
+RSpec.describe 'Routes', type: :request do
   let!(:routes) { create_list(:route, 10) }
 
-  describe "GET /index" do
+  describe 'GET /index' do
     before { get('/routes') }
     it 'returns all routes' do
       expect(JSON.parse(response.body)['routes'].length).to be 10
@@ -14,7 +16,7 @@ RSpec.describe "Routes", type: :request do
     end
   end
 
-  describe "GET /show/:id" do
+  describe 'GET /show/:id' do
     context 'with a valid id' do
       before { get("/routes/#{routes.first.id}") }
       it 'returns requested route' do

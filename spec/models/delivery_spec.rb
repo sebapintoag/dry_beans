@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Delivery, type: :model do
@@ -11,7 +13,7 @@ RSpec.describe Delivery, type: :model do
   end
 
   describe 'states' do
-    let(:delivery) {create(:delivery)}
+    let(:delivery) { create(:delivery) }
 
     context 'when delivery is pending' do
       it 'may transition to delivered' do

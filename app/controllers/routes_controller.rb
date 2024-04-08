@@ -1,24 +1,26 @@
+# frozen_string_literal: true
+
 class RoutesController < ApplicationController
-    before_action :find_one, only: :show
-    before_action :find_all, only: :index
+  before_action :find_one, only: :show
+  before_action :find_all, only: :index
 
-    def index
-        render json: RouteSerializer.serialize!(@routes, :short), status: 200
-    end
+  def index
+    render json: RouteSerializer.serialize!(@routes, :short), status: :ok
+  end
 
-    def show
-        render json: RouteSerializer.serialize!(@route, :extended), status: 200
-    end
+  def show
+    render json: RouteSerializer.serialize!(@route, :extended), status: :ok
+  end
 
-    private
+  private
 
-    def find_all
-        @routes = Route.all
-    end
+  def find_all
+    @routes = Route.all
+  end
 
-    def find_one
-        @route = Route.find(params[:id])
-    rescue ActiveRecord::RecordNotFound
-        render json: {error: { message: "Route with ID #{params[:id]} not found" }}, status: 404
-    end
+  def find_one
+    @route = Route.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    render json: { error: { message: "Route with ID #{params[:id]} not found" } }, status: :not_found
+  end
 end
