@@ -1,4 +1,6 @@
 class RouteSerializer < Blueprinter::Base
+  include Serializable
+
   identifier :id
   fields :code, :state
 
@@ -11,10 +13,5 @@ class RouteSerializer < Blueprinter::Base
             :created_at, :updated_at
 
     association :trips_sorted, name: :trips, blueprint: TripSerializer
-  end
-
-  def self.serialize!(resource, view_name = :extended)
-    root_name = resource.respond_to?(:size) ? resource.first.class.name.downcase.pluralize : resource.class.name.downcase
-    self.render(resource, root: root_name, view: view_name)
   end
 end
