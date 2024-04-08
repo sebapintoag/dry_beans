@@ -16,6 +16,9 @@
 2. Run `docker-compose run -it web rails db:migrate` to run migrations and create tables
 3. Run `docker-compose run -it web rails db:seed` to populate the database
 
+#### To run specs...
+1. Run `docker-compose run -it web rspec` to run all tests
+
 ## Option 2: running on your machine
 ### Requirements
 - Ruby 3.2.2
@@ -31,6 +34,9 @@
 1. Run `rails db:create` to create a database for development and test enviorments
 2. Run `rails db:migrate` to run migrations and create tables
 3. Run `rails db:seed` to populate the database
+
+#### To run specs...
+1. Run ` rspec` to run all tests
 
 ### Routes
 **Examples of use in Postman collection: `postman/dry_beans.postman_collection.json`**
