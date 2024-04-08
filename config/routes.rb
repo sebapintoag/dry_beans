@@ -11,4 +11,10 @@ Rails.application.routes.draw do
       put 'deliver'
     end
   end
+
+  resources :pickups, only: %i[pickup] do
+    member do
+      put 'pickup'
+    end
+  end
 end

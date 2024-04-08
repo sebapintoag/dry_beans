@@ -1,9 +1,14 @@
 class Deliveries::Deliver
-    def initialize(id_delivery)
-        #@delivery = Delivery.find(id_delivery)
+    def initialize(delivery, deliver_params)
+        @delivery = delivery
+        @deliver_params = deliver_params
     end
 
     def process
-        puts 'delivered!!!!!!!'
+        raise "Can't deliver. Reception data is not present" unless @deliver_params.present?
+        raise "Can't deliver. Delivery is #{@delivery.state} state." unless @delivery.may_deliver?
+
+        @delivery.deliver!
+        @delivery.update(@deliver_params)
     end
 end

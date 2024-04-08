@@ -10,42 +10,71 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_07_031621) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_07_211959) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "deliveries", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "moves", force: :cascade do |t|
     t.bigint "trip_id", null: false
-    t.bigint "movable_id", null: false
-    t.string "movable_type", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["movable_type", "movable_id"], name: "index_moves_on_movable_type_and_movable_id"
-    t.index ["trip_id"], name: "index_moves_on_trip_id"
+    t.string "token", null: false
+    t.string "state", null: false
+    t.datetime "delivered_at"
+    t.datetime "postponed_at"
+    t.datetime "rejected_at"
+    t.string "receiver_name"
+    t.string "receiver_phone"
+    t.string "receiver_legal_id"
+    t.string "proof_of_delivery"
+    t.index ["trip_id"], name: "index_deliveries_on_trip_id"
   end
 
   create_table "pickups", force: :cascade do |t|
+    t.bigint "trip_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "token", null: false
+    t.string "state", null: false
+    t.datetime "picked_up_at"
+    t.datetime "postponed_at"
+    t.datetime "cancelled_at"
+    t.index ["trip_id"], name: "index_pickups_on_trip_id"
   end
 
   create_table "routes", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "code", null: false
+    t.string "starting_point", null: false
+    t.string "destination_point"
+    t.string "vehicle_plate"
+    t.string "state", null: false
+    t.datetime "approved_at"
+    t.datetime "started_at"
+    t.datetime "finished_at"
+    t.datetime "cancelled_at"
   end
 
   create_table "trips", force: :cascade do |t|
     t.bigint "route_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "code", null: false
+    t.string "destination_person_name", null: false
+    t.string "destination_person_phone"
+    t.string "destination_address", null: false
+    t.decimal "destination_lat"
+    t.decimal "destination_lng"
+    t.string "state", null: false
+    t.datetime "started_at"
+    t.datetime "finished_at"
+    t.datetime "cancelled_at"
+    t.datetime "estimated_arrival_at"
     t.index ["route_id"], name: "index_trips_on_route_id"
   end
 
-  add_foreign_key "moves", "trips"
+  add_foreign_key "deliveries", "trips"
+  add_foreign_key "pickups", "trips"
   add_foreign_key "trips", "routes"
 end
