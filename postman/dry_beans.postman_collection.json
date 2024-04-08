@@ -24,6 +24,29 @@
 			"response": []
 		},
 		{
+			"name": "All routes (pages)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{LOCAL}}/routes?page=2",
+					"host": [
+						"{{LOCAL}}"
+					],
+					"path": [
+						"routes"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "One route",
 			"request": {
 				"method": "GET",
