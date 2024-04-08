@@ -7,8 +7,8 @@ RSpec.describe 'Routes', type: :request do
 
   describe 'GET /index' do
     before { get('/routes') }
-    it 'returns all routes' do
-      expect(JSON.parse(response.body)['routes'].length).to be 10
+    it 'returns 5 routes per page' do
+      expect(JSON.parse(response.body)['routes'].length).to be 5
     end
 
     it 'returns status code 200' do
