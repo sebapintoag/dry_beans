@@ -1,5 +1,12 @@
 # frozen_string_literal: true
 
+# Pickup
+# trip_id: ID of the belonging trip
+# token: Token identifier of the pickup
+# state: Current state of the pickup
+# picked_up_at: Date and time when the pickup was done
+# postponed_at: Date and time when the pickup was posponed
+# cancelled_at: Date and time when the pickup was cancelled
 class Pickup < ApplicationRecord
   include AASM
   include AasmEventAt

@@ -3,6 +3,7 @@
 class PickupsController < ApplicationController
   before_action :find_one, only: :pickup
 
+  # Performs a pickup
   def pickup
     Pickups::Pickup.new(@pickup).process
 
@@ -11,6 +12,7 @@ class PickupsController < ApplicationController
 
   private
 
+  # Search a single pickup by id
   def find_one
     @pickup = Pickup.find(params[:id])
   rescue ActiveRecord::RecordNotFound
